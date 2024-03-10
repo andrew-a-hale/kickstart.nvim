@@ -12,8 +12,9 @@ vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 
 -- Make line numbers default
 vim.opt.number = true
@@ -74,28 +75,12 @@ vim.opt.scrolloff = 10
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<leader>E', ':Neotree<enter>')
-vim.keymap.set('n', '<C-/>', ':sp<enter>:term<enter>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
--- TIP: Disable arrow keys in normal mode
-vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -110,6 +95,14 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<C-s>', ':w<enter>', { desc = 'Save!' })
 vim.keymap.set('i', '<C-s>', '<esc>:w<enter>', { desc = 'Save!' })
 vim.keymap.set('v', '<C-s>', '<esc>:w<enter>', { desc = 'Save!' })
+vim.keymap.set('n', '<leader>E', ':Neotree<enter>')
+-- vim.keymap.set('n', '<C-\\><C-\\>', ':sp<enter>:term<enter>i')
+vim.keymap.set('n', '<C-\\><C-\\>', function()
+	vim.cmd 'cd %:p:h'
+	vim.cmd 'split'
+	vim.cmd 'terminal'
+	vim.cmd 'startinsert'
+end)
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -641,6 +634,3 @@ require('lazy').setup({
 		},
 	},
 })
-
--- modeline
--- vim: ts=4 sw=4 sts=2 et
