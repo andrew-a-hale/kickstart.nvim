@@ -103,6 +103,12 @@ vim.keymap.set('n', '<C-\\><C-\\>', function()
 	vim.cmd 'terminal'
 	vim.cmd 'startinsert'
 end)
+vim.keymap.set('n', '<C-|><C-|>', function()
+	vim.cmd 'cd %:p:h'
+	vim.cmd 'vsplit'
+	vim.cmd 'terminal'
+	vim.cmd 'startinsert'
+end)
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
