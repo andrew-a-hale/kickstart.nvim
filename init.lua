@@ -105,7 +105,7 @@ vim.keymap.set('n', '<C-\\><C-s>', function()
 end)
 vim.keymap.set('n', '<C-\\><C-v>', function()
 	vim.cmd 'cd %:p:h'
-	vim.cmd 'split'
+	vim.cmd 'vsplit'
 	vim.cmd 'terminal'
 	vim.cmd 'startinsert'
 end)
