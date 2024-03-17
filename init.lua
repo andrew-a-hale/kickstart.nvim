@@ -96,7 +96,6 @@ vim.keymap.set('n', '<C-s>', ':w<enter>', { desc = 'Save!' })
 vim.keymap.set('i', '<C-s>', '<esc>:w<enter>', { desc = 'Save!' })
 vim.keymap.set('v', '<C-s>', '<esc>:w<enter>', { desc = 'Save!' })
 vim.keymap.set('n', '<leader>E', ':Neotree<enter>')
--- vim.keymap.set('n', '<C-\\><C-\\>', ':sp<enter>:term<enter>i')
 vim.keymap.set('n', '<C-\\><C-s>', function()
 	vim.cmd 'cd %:p:h'
 	vim.cmd 'split'
